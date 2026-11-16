@@ -1,13 +1,14 @@
-name: Autograding
+name: Autograde
 
-on: [push]
+on:
+  push:
+    branches: ["main"]
+    tags: ["submit/*"]
 
 jobs:
-  run-autograding-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Autograding
-        uses: classroom-resources/autograding@v1
+  grade:
+    uses: "nit-robotics-ProgrammingLanguage-2026/classroom50-public/.github/workflows/autograde-runner.yaml@main"
+    permissions:
+      contents: write
+      statuses: write
+      pull-requests: write
