@@ -2,26 +2,27 @@
 
 int main(void)
 {
-    int n;
-    long total = 0;
-    scanf("%d", &n);
+    int input_number;
+    scanf("%d", &input_number);
 
     // 入力値が負の場合は「NG」を表示して終了する
-    if (n < 0)
+    if (input_number < 0)
     {
         printf("NG");
         return 0;
     }
 
-    // for文を使用し、breakやcontinueを使わずに1からnまでの偶数を合算する
-    for (int i = 1; i <= n; i++)
+    long total_sum = 0;
+
+    // breakやcontinueを使わず、for文とif文だけで3・5の倍数以外を合算する
+    for (int current_number = 1; current_number <= input_number; current_number++)
     {
-        if (i % 2 == 0)
+        if (current_number % 3 != 0 && current_number % 5 != 0)
         {
-            total += i;
+            total_sum += current_number;
         }
     }
 
-    printf("%ld", total);
+    printf("%ld", total_sum);
     return 0;
 }
